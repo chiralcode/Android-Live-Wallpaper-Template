@@ -8,16 +8,16 @@ public class AnimationThread extends Thread {
 
     private static final String TAG = "AnimationThread";
 
-    private Object pauseLock = new Object();
+    private final Object pauseLock = new Object();
+
+    private final SurfaceHolder surfaceHolder;
+    private final Scene scene;
 
     private boolean running = true;
     private boolean paused = true;
 
     private int fps = 30;
     private int timeFrame = 1000 / fps; // drawing time frame in miliseconds 1000 ms / fps
-
-    private SurfaceHolder surfaceHolder;
-    private Scene scene;
 
     AnimationThread(SurfaceHolder surfaceHolder, Scene scene) {
         this.surfaceHolder = surfaceHolder;
